@@ -16,9 +16,7 @@ const autoFill = ({email, message}) => {
   if (email || message){
     emailS.value = email;
     messageS.value = message;
-    return
   }
-  return
 };
 
 autoFill(storageInfo);
@@ -28,7 +26,8 @@ const submitFunc = (event) => {
 
   if (!emailS.value || !messageS.value) {
     return alert("Please fill in all the fields!");
-  }
+  };
+
   console.log(storageInfo);
   localStorage.removeItem("feedback-form-state");
   emailS.value = "";
