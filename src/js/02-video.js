@@ -12,15 +12,12 @@ player.on("timeupdate", throttle(function(player)
 
 const currentTime = localStorage.getItem("videoplayer-current-time");
 
-player.setCurrentTime(currentTime).then(function(currentTime) {
-  player.seconds = currentTime;
-}).catch(function(error) {
-  switch (error.name) {
-      case 'RangeError':
-          break;
-      default:
-          break;
+const setTime = (currentTime) => {
+  if (currentTime !== null) {
+    player.setCurrentTime(currentTime)}
+    return
   }
-});
+
+setTime(currentTime);
 
 

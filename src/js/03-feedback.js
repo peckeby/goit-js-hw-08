@@ -2,8 +2,8 @@ import throttle from 'lodash.throttle';
 
 
 const form = document.querySelector(".feedback-form");
-const emailS = document.querySelector("input");
-const messageS = document.querySelector("textarea");
+const emailS = form.elements.email;
+const messageS = form.elements.message;
 
 
 const updateStorageInfo = () => localStorage.setItem("feedback-form-state", JSON.stringify({email:`${emailS.value}`, message:`${messageS.value}`}));
@@ -16,7 +16,9 @@ const autoFill = ({email, message}) => {
   if (email || message){
     emailS.value = email;
     messageS.value = message;
+    return
   }
+  return
 };
 
 autoFill(storageInfo);
@@ -28,7 +30,7 @@ const submitFunc = (event) => {
     return alert("Please fill in all the fields!");
   }
   console.log(storageInfo);
-  localStorage.clear();
+  localStorage.removeItem("feedback-form-state");
   emailS.value = "";
   messageS.value = "";
 }
